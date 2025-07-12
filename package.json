@@ -1,0 +1,21 @@
+{
+  "name": "lucchese-product-page",
+  "packageManager": "yarn@4.6.0",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "autoprefixer": "^10.4.21",
+    "parcel": "^2.15.4",
+    "postcss": "^8.5.6",
+    "tailwindcss": "3",
+    "typescript": "^5.8.3"
+  },
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy && yarn tailwind:build",
+    "tailwind:build": "tailwindcss -i ./src/styles/tailwind.css -o ./public/output.css --minify"
+  },
+  "dependencies": {
+    "@types/alpinejs": "^3.13.11",
+    "alpinejs": "^3.14.9"
+  }
+}
