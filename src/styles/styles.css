@@ -1,1 +1,3 @@
-@import "./tailwind.css";
+.thumbsSwiper .swiper-slide {
+    width:auto;
+}
