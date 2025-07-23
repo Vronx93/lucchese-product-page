@@ -1,0 +1,23 @@
+---
+pagination:
+  data: products
+  size: 1
+  alias: product
+permalink: "{{ product.slug }}/"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head x-data="product" x-init="init()">
+    <meta charset="UTF-8" />
+    <title x-text="product.title + ' - ' + product.color.charAt(0).toUpperCase() + product.color.slice(1)"></title>
+    <script
+      type="module"
+      src="http://localhost:3001/src/main.ts"
+      defer></script>
+    <link rel="stylesheet" href="/output.css" />
+  </head>
+  <body class="overflow-x-clip">
+    {% render "product-card/product-card" %}
+  </body>
+</html>
