@@ -1,14 +1,12 @@
-// .eleventy.js
-module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("public");
 
+module.exports = function (eleventyConfig) {
   return {
     dir: {
       input: "src",
-      includes: "includes",
+      includes: "_includes",
       data: "data",
-      output: "dist",
+      output: "public/dist",
     },
-    htmlTemplateEngine: "liquid",
+    templateFormats: ["liquid", "html"],
   };
 };

@@ -9,5 +9,6 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {}
-  }
+  },
+   "include": ["src"],
 }
