@@ -1,0 +1,93 @@
+<section
+  x-data="product"
+  x-init="init()"
+  x-show="isLoading"
+  class="flex items-center justify-center h-screen w-screen"
+  aria-label="Loading data.">
+  <p class="animate-pulse">Loading...</p>
+</section>
+
+
+<section
+  x-data="product"
+  x-show="!isLoading"
+  x-init="init()"
+  class="flex flex-col
+">
+  <div class="flex-col md:flex md:flex-row md:flex-nowrap">
+    <div class="relative z-0 w-full md:w-1/2 2xl:w-full">
+      {% render 'product-card/gallery' %}
+    </div>
+    <div class="relative w-full md:w-1/2 2xl:max-w-[560px]">
+      <div class="sticky right-0 top-0 bottom-0 left-0 flex flex-col px-5 py-8">
+        {% render 'product-card/header' %}
+        {% render 'product-card/variant-selector' %}
+        <div class="w-full h-[1px] bg-gray-200 my-6"></div>
+        {% render 'product-card/style-id' %}
+        <div class="w-full h-[1px] bg-gray-200 my-6"></div>
+        {% render 'product-card/short-description' %}
+        {% render 'product-card/size-selector' %}
+        {% render 'product-card/size-modal' %}
+        {% render 'product-card/add-to-cart-button' %}
+        <div class="w-full h-[1px] bg-gray-200 my-6"></div>
+        <div x-data="product">
+          <button class="flex items-center justify-between w-full h-14 text-primary border border-primary p-3 font-medium">
+            <p>CHECK AVAILABILITY IN STORE</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-map-pin-icon lucide-map-pin"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle
+                cx="12"
+                cy="10"
+                r="3" /></svg>
+          </button>
+        </div>
+
+        <ul class="flex flex-col items-center justify-center mt-5 gap-6 font-medium text-sm text-primary">
+          <li class="flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-truck-icon lucide-truck"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" /><path d="M15 18H9" /><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" /><circle
+                cx="17"
+                cy="18"
+                r="2" /><circle
+                cx="7"
+                cy="18"
+                r="2" /></svg>
+            <p>FREE SHIPPING ON ORDERS OVER $100</p>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-undo2-icon lucide-undo-2"><path d="M9 14 4 9l5-5" /><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11" /></svg>
+            <p>30-DAY RETURN OR EXCHANGE</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  {% render 'product-card/accordion' %}
+</section>

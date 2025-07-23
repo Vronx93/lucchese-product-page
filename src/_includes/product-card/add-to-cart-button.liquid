@@ -1,0 +1,15 @@
+<div x-data="{isInView: false, ...product}">
+  <button
+    x-intersect="isInView = true"
+    x-intersect:leave="isInView = false"
+    x-intersect:enter="isInView = true"
+    class="sticky bottom-4 flex items-center justify-center w-full h-16 bg-primary text-white mt-5"
+    x-text="'ADD TO CART - $' + product.price"></button>
+
+  <button
+    :tabindex="isInView ? 0 : -1"
+    :aria-hidden="!isInView"
+    class="fixed left-5 bottom-5 right-5 flex items-center justify-center h-16 bg-primary text-white mt-5 transition-all ease-in-out duration-500"
+    :class="{'opacity-0 -z-50' : isInView, 'opacity-100 z-10': !isInView}"
+    x-text="'ADD TO CART - $' + product.price"></button>
+</div>

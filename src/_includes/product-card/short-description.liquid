@@ -1,0 +1,8 @@
+<div x-data="product" class="flex flex-col gap-4">
+  <template x-if="!isLoading">
+    <div class="line-clamp-3">
+      <p x-text="product.desc.text"></p>
+    </div>
+    <a class="underline text-blue-700" href="#description">Read more below</a>
+  </template>
+</div>

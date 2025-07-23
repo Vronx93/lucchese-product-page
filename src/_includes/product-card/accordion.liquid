@@ -1,0 +1,76 @@
+<ul x-data="product" class="flex flex-col my-20 px-5 max-w-[1000px] mx-auto">
+  <template x-if="!isLoading">
+    <li x-show="product.desc" x-data="useToggle()">
+      <button @click="toggle()" class="flex items-center w-full justify-between text-primary font-medium py-6">
+        <p>DESCRIPTION</p>
+        <div class="relative h-4 w-4">
+          <div class="absolute left-0 top-1/2 h-[2px] w-full bg-primary"></div>
+          <div class="absolute left-0 top-1/2 h-[2px] w-full bg-primary transition-transform ease-in-out duration-300" :class="{'rotate-0': isOpen, 'rotate-90': !isOpen}"></div>
+        </div>
+      </button>
+      <div class="w-full h-[1px] bg-gray-200"></div>
+      <div
+        x-ref="descRef"
+        :style="isOpen ? `max-height: ${$refs.descRef.scrollHeight + 64}px` : 'max-height: 0px'"
+        :class="{'pb-10 pt-6': isOpen}"
+        class="flex flex-col gap-6 overflow-hidden transition-all duration-300 ease-in-out">
+        <p x-show="product.desc.text" x-text="product.desc.text"></p>
+        <ul x-show="product.desc.list && product.desc.list.length > 0" class="flex flex-col gap-1 list-disc pl-8">
+          <template x-for="item in product.desc.list" :key="item">
+            <li x-text="item"></li>
+          </template>
+        </ul>
+      </div>
+    </li>
+  </template>
+
+  <template x-if="!isLoading">
+    <li x-show="product.material" x-data="useToggle()">
+      <button @click="toggle()" class="flex items-center w-full justify-between text-primary font-medium py-6">
+        <p>MATERIAL</p>
+        <div class="relative h-4 w-4">
+          <div class="absolute left-0 top-1/2 h-[2px] w-full bg-primary"></div>
+          <div class="absolute left-0 top-1/2 h-[2px] w-full bg-primary transition-transform ease-in-out duration-300" :class="{'rotate-0': isOpen, 'rotate-90': !isOpen}"></div>
+        </div>
+      </button>
+      <div class="w-full h-[1px] bg-gray-200"></div>
+      <div
+        x-ref="materialRef"
+        :style="isOpen ? `max-height: ${$refs.materialRef.scrollHeight + 64}px` : 'max-height: 0px'"
+        :class="{'pb-10 pt-6': isOpen}"
+        class="flex flex-col gap-6 overflow-hidden transition-all duration-300 ease-in-out">
+        <p class="text-3xl font-light" x-text="product.material.name"></p>
+        <p x-text="product.material.text"></p>
+        <img
+          loading="lazy"
+          :src="product.material.img"
+          class="w-full mt-4" />
+      </div>
+    </li>
+  </template>
+
+  <template x-if="!isLoading">
+    <li x-show="product.care" x-data="useToggle()">
+      <button @click="toggle()" class="flex items-center w-full justify-between text-primary font-medium py-6">
+        <p>CARE</p>
+        <div class="relative h-4 w-4">
+          <div class="absolute left-0 top-1/2 h-[2px] w-full bg-primary"></div>
+          <div class="absolute left-0 top-1/2 h-[2px] w-full bg-primary transition-transform ease-in-out duration-300" :class="{'rotate-0': isOpen, 'rotate-90': !isOpen}"></div>
+        </div>
+      </button>
+      <div class="w-full h-[1px] bg-gray-200"></div>
+      <div
+        x-ref="careRef"
+        :style="isOpen ? `max-height: ${$refs.careRef.scrollHeight + 64}px` : 'max-height: 0px'"
+        :class="{'pb-10 pt-6': isOpen}"
+        class="flex flex-col gap-6 overflow-hidden transition-all duration-300 ease-in-out">
+        <p class="text-3xl font-light" x-text="product.care.title"></p>
+        <p x-text="product.care.text"></p>
+        <img
+          loading="lazy"
+          :src="product.care.img"
+          class="w-full mt-4" />
+      </div>
+    </li>
+  </template>
+</ul>

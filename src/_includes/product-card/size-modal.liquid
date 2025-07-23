@@ -1,0 +1,206 @@
+<div x-data="useToggle()">
+  <button @click="open()" class="flex items-center justify-between w-full h-14 text-primary border border-primary p-3 font-medium">
+    <p>CHOOSE SIZE</p>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="lucide lucide-chevron-right-icon lucide-chevron-right"><path d="m9 18 6-6-6-6" /></svg>
+  </button>
+
+  <div
+    :tabindex="isOpen ? 0 : -1"
+    :aria-hidden="!isOpen"
+    class="fixed w-full h-full left-0 top-0"
+    :class="isOpen ? 'opacity-25 z-10' : 'hidden opacity-0 -z-10'">
+    <div @click="close()" class="fixed top-0 left-0 right-0 bottom-0 w-screen h-screen bg-gray-700 transition-opacity ease-out duration-300"></div>
+  </div>
+
+
+  <div class="fixed top-0 right-0 px-6 w-full min-h-full max-h-screen bg-white transition-transform duration-300 transform translate-x-full z-50 overflow-y-scroll
+    md:max-w-[414px]" :class="{ 'translate-x-0': isOpen, 'translate-x-full': !isOpen }">
+
+    <header class="flex items-center justify-between pt-6">
+      <h1 class="text-primary">CHOOSE SIZE</h1>
+      <button @click="close()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-x-icon lucide-x text-primary"
+          @click="close"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+      </button>
+    </header>
+    <div class="w-full h-[1px] bg-gray-200 my-6"></div>
+    <div class="flex items-center justify-between pb-2 gap-3">
+      <div class="flex items-center gap-4">
+        <p class="text-sm text-black">Size:</p>
+        <button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-info-icon lucide-info text-primary"><circle
+              cx="12"
+              cy="12"
+              r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" /></svg>
+        </button>
+      </div>
+      <div class="flex flex-nowrap items-center text-primary">
+        <button class="flex items-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-ruler-icon lucide-ruler"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z" /><path d="m14.5 12.5 2-2" /><path d="m11.5 9.5 2-2" /><path d="m8.5 6.5 2-2" /><path d="m17.5 15.5 2-2" /></svg>
+          <p class="text-sm font-medium">FIT GUIDE</p>
+        </button>
+        <div class="h-5 w-[1px] bg-gray-300 mx-3"></div>
+        <button class="flex items-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-ruler-dimension-line-icon lucide-ruler-dimension-line"><path d="M12 15v-3.014" /><path d="M16 15v-3.014" /><path d="M20 6H4" /><path d="M20 8V4" /><path d="M4 8V4" /><path d="M8 15v-3.014" /><rect
+              x="3"
+              y="12"
+              width="18"
+              height="7"
+              rx="1" /></svg>
+          <p class="text-sm font-medium">SIZE CHART</p>
+        </button>
+      </div>
+    </div>
+    <div class="flex gap-2 items-center justify-center bg-gray-50 p-2 text-primary my-3">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-move-icon lucide-move rotate-45"><path d="M12 2v20" /><path d="m15 19-3 3-3-3" /><path d="m19 9 3 3-3 3" /><path d="M2 12h20" /><path d="m5 9-3 3 3 3" /><path d="m9 5 3-3 3 3" /></svg>
+      <p class="text-sm">Order a half size up for a wider fit</p>
+    </div>
+    <ul
+      x-data="sizes"
+      x-init="init()"
+      class="flex flex-wrap gap-2">
+      <template x-for="size in sizes" :key="size">
+        <li>
+          <button
+            @click="setSize(size)"
+            class="flex items-center justify-center h-14 min-w-[61px] border border-primary"
+            :class="{'border-2 font-bold': size === currentSize}">
+            <p x-text="size"></p>
+          </button>
+        </li>
+      </template>
+    </ul>
+    <div class="flex items-center gap-4 mt-10">
+      <p class="text-sm text-black">Width:</p>
+      <button>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-info-icon lucide-info text-primary"><circle
+            cx="12"
+            cy="12"
+            r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" /></svg>
+      </button>
+    </div>
+    <ul
+      x-data="widths"
+      x-init="init()"
+      class="flex flex-wrap gap-2 mt-4">
+      <template x-for="width in widths" :key="width">
+        <li>
+          <button
+            @click="setWidth(width)"
+            class="flex items-center justify-center h-14 min-w-[61px] border border-primary"
+            :class="{'border-2 font-bold': width === currentWidth}">
+            <p x-text="width"></p>
+          </button>
+        </li>
+      </template>
+    </ul>
+    <div class="flex items-center gap-4 mt-10">
+      <p class="text-sm text-black">Toe + Heel:</p>
+      <button>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-info-icon lucide-info text-primary"><circle
+            cx="12"
+            cy="12"
+            r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" /></svg>
+      </button>
+    </div>
+    <button class="flex items-center justify-center h-14 min-w-[61px] border-2 font-bold border-primary px-2 mt-4">
+      <p>S5 + 4</p>
+    </button>
+
+    <div class="flex flex-col gap-4 p-4 bg-gray-50 mt-5">
+      <p class="text-xs">Selected toe + heel:</p>
+      <div class="flex gap-4 items-center">
+        <div class="flex items-center justify-center h-[104px] w-[104px] p-1 bg-white border border-gray-300"><img src="/assets/images/toe_S5.svg" /></div>
+        <div class="flex items-center justify-center h-[104px] w-[104px] p-1 bg-white border border-gray-300"><img src="/assets/images/heel_4.svg" /></div>
+      </div>
+    </div>
+    <div class="sticky bottom-0 bg-white mt-20">
+      <div class="w-full h-[1px] bg-gray-200"></div>
+      <div x-data="product" class="sticky bottom-0 grid grid-cols-[1fr_5fr] gap-3 my-4">
+        <button class="h-14 p-2 border border-primary" @click="close()">DONE</button>
+        <button class="h-14 p-2 border border-primary bg-primary text-white" x-text="'ADD TO CART - $' + product.price"></button>
+      </div>
+    </div>
+  </div>
+
+</div>

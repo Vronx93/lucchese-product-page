@@ -1,0 +1,35 @@
+<div
+  x-data="variants"
+  x-init="init()"
+  class="flex flex-col gap-4 mt-8">
+  <p class="text-sm text-gray-500">Color:
+    <span
+      x-data="product"
+      x-text="product.color.charAt(0).toUpperCase() + product.color.slice(1)"
+      class="text-black text-base"></span>
+  </p>
+  <ul class="flex gap-3 items-center flex-wrap" aria-label="Choose product variant">
+    <template x-for="variant in variants" :key="variant.name">
+      <li>
+        <button
+          @click="
+    const path = window.location.pathname.split('/').filter(Boolean).pop();
+    if(path !== variant.name) {
+      window.location.href = `/${variant.name}`
+    }
+  "
+          class="flex items-center justify-center rounded-full h-12 w-12 border hover:border-2 hover:border-black"
+          :class="{
+    'border-black border-2': window.location.pathname.split('/').filter(Boolean).pop() === variant.name,
+    'border border-gray-200': window.location.pathname.split('/').filter(Boolean).pop() !== variant.name,
+    }">
+
+          <img
+            :src="variant.image"
+            loading="lazy"
+            class="h-10 w-10 rounded-full" />
+        </button>
+      </li>
+    </template>
+  </ul>
+</div>
