@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import { resolve } from "path";
-import { viteStaticCopy } from 'vite-plugin-static-copy';
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 export default defineConfig({
   root: ".",
@@ -10,11 +10,13 @@ export default defineConfig({
   publicDir: false,
   build: {
     outDir: "public/dist/assets",
-    emptyOutDir: false,
+    assetsDir: "",
+    emptyOutDir: true,
     rollupOptions: {
       input: resolve(__dirname, "src/main.ts"),
       output: {
         entryFileNames: "main.js",
+        assetFileNames: "main.css"
       },
     },
   },
@@ -22,14 +24,14 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          src: 'src/data/*.json',
-          dest: 'data' 
+          src: "src/data/*.json",     
+          dest: "data"                
         },
         {
-          src: 'public/assets/images',
-          dest: 'assets'
+          src: "src/assets/images/**/*", 
+          dest: "images"          
         }
       ]
-    })
+    }),
   ]
 });

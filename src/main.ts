@@ -1,3 +1,4 @@
+import "./styles/tailwind.css";
 import "./styles/styles.css";
 import 'swiper/css';
 import 'swiper/css/thumbs';

@@ -15,7 +15,8 @@ permalink: "{{ product.slug }}/"
       type="module"
       src="{{ env.MAIN_PATH }}"
       defer></script>
-    <link rel="stylesheet" href="/output.css" />
+    <link rel="stylesheet" href="/assets/main.css" />
+    <link rel="stylesheet" href="/assets/tailwind.css" />
   </head>
   <body class="overflow-x-clip">
     {% render "product-card/product-card" %}
