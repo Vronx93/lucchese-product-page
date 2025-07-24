@@ -13,7 +13,7 @@ permalink: "{{ product.slug }}/"
     <title x-text="product.title + ' - ' + product.color.charAt(0).toUpperCase() + product.color.slice(1)"></title>
     <script
       type="module"
-      src="http://localhost:3001/src/main.ts"
+      src="{{ env.API_URL }}"
       defer></script>
     <link rel="stylesheet" href="/output.css" />
   </head>

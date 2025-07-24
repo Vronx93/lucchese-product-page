@@ -1,3 +1,8 @@
+const dotenv = require("dotenv");
+
+const envFile = process.env.NODE_ENV === "production" ? ".env.prod" : ".env";
+dotenv.config({ path: envFile });
+
 
 module.exports = function (eleventyConfig) {
   return {
@@ -8,5 +13,8 @@ module.exports = function (eleventyConfig) {
       output: "public/dist",
     },
     templateFormats: ["liquid", "html"],
+        data: {
+      env: process.env,
+    },
   };
 };

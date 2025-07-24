@@ -28,6 +28,7 @@
     "@fancyapps/ui": "^6.0.16",
     "@types/alpinejs": "^3.13.11",
     "alpinejs": "^3.14.9",
+    "dotenv": "^17.2.0",
     "swiper": "^11.2.10"
   }
 }
