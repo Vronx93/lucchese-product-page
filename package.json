@@ -15,12 +15,12 @@
     "vite": "^4.3.9",
     "vite-plugin-static-copy": "^3.1.1"
   },
-"scripts": {
-  "tailwind:build": "tailwindcss -i ./src/styles/tailwind.css -o ./public/dist/output.css --minify",
-  "tailwind:watch": "tailwindcss -i ./src/styles/tailwind.css -o ./public/dist/output.css --watch",
-  "dev": "concurrently \"vite\" \"eleventy --input=src --output=public/dist --serve\" \"yarn tailwind:watch\"",
-  "build":  "yarn dlx @11ty/eleventy --input=src --output=public/dist && vite build && yarn tailwind:build"
-},
+    "scripts": {
+    "tailwind:build": "tailwindcss -i ./src/styles/tailwind.css -o ./public/dist/output.css --minify",
+    "tailwind:watch": "tailwindcss -i ./src/styles/tailwind.css -o ./public/dist/output.css --watch",
+    "dev": "concurrently \"vite\" \"eleventy --input=src --output=public/dist --serve\" \"yarn tailwind:watch\"",
+    "build": "eleventy --input=src --output=public/dist && vite build && yarn tailwind:build"
+  },
   "dependencies": {
     "@alpinejs/intersect": "^3.14.9",
     "@fancyapps/ui": "^6.0.16",
