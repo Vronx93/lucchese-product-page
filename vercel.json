@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/priscilla-suede-espresso",
+      "permanent": true
+    }
+  ]
+}
