@@ -19,7 +19,7 @@
   "tailwind:build": "tailwindcss -i ./src/styles/tailwind.css -o ./public/dist/output.css --minify",
   "tailwind:watch": "tailwindcss -i ./src/styles/tailwind.css -o ./public/dist/output.css --watch",
   "dev": "concurrently \"vite\" \"eleventy --input=src --output=public/dist --serve\" \"yarn tailwind:watch\"",
-  "build": "eleventy --input=src --output=public/dist && vite build && yarn tailwind:build"
+  "build": "yarn eleventy --input=src --output=public/dist && vite build && yarn tailwind:build"
 },
   "dependencies": {
     "@alpinejs/intersect": "^3.14.9",
