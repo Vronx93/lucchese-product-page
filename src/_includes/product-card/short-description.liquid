@@ -3,6 +3,9 @@
     <div class="line-clamp-3">
       <p x-text="product.desc.text"></p>
     </div>
-    <a class="underline text-blue-700" href="#description">Read more below</a>
   </template>
+  <a
+    @click.prevent="document.querySelector('#description')?.scrollIntoView({ behavior: 'smooth' })"
+    class="underline text-blue-700 scroll-smooth"
+    href="#description">Read more below</a>
 </div>
