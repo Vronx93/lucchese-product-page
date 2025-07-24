@@ -5,24 +5,22 @@
     "@11ty/eleventy": "^3.1.2",
     "@shopify/prettier-plugin-liquid": "^1.9.3",
     "@types/alpinejs__intersect": "^3",
-    "@types/cpx": "^1",
     "@types/node": "^24.0.13",
     "autoprefixer": "^10.4.21",
     "concurrently": "^9.2.0",
-    "cpx": "^1.5.0",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
     "tailwindcss": "3",
     "typescript": "^5.8.3",
-    "vite": "^4.3.9"
+    "vite": "^4.3.9",
+    "vite-plugin-static-copy": "^3.1.1"
   },
-  "scripts": {
-    "copy:data": "cpx \"src/data/*.json\" public/dist/data",
-    "tailwind:build": "tailwindcss -i ./src/styles/tailwind.css -o ./public/dist/output.css --minify",
-    "tailwind:watch": "tailwindcss -i ./src/styles/tailwind.css -o ./public/dist/output.css --watch",
-    "dev": "concurrently \"yarn copy:data && vite\" \"eleventy --input=src --output=public/dist --serve\" \"yarn tailwind:watch\"",
-    "build": "yarn copy:data && eleventy --input=src --output=public/dist && vite build && yarn tailwind:build"
-  },
+"scripts": {
+  "tailwind:build": "tailwindcss -i ./src/styles/tailwind.css -o ./public/dist/output.css --minify",
+  "tailwind:watch": "tailwindcss -i ./src/styles/tailwind.css -o ./public/dist/output.css --watch",
+  "dev": "concurrently \"vite\" \"eleventy --input=src --output=public/dist --serve\" \"yarn tailwind:watch\"",
+  "build": "eleventy --input=src --output=public/dist && vite build && yarn tailwind:build"
+},
   "dependencies": {
     "@alpinejs/intersect": "^3.14.9",
     "@fancyapps/ui": "^6.0.16",

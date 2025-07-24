@@ -2,7 +2,7 @@ import { Product } from "src/interfaces";
 
 async function fetchProduct(productSlug: string) {
   try {
-    const res = await fetch("/data/products.json");
+    const res = await fetch("/assets/data/products.json");
 
     if (!res.ok) {
       console.error(res.status, res.statusText);

@@ -2,7 +2,7 @@ import { Variant } from "src/interfaces";
 
 async function fetchVariants() {
   try {
-    const res = await fetch("/data/variants.json");
+    const res = await fetch("/assets/data/variants.json");
 
     if (!res.ok) {
       console.error(res.status, res.statusText);
