@@ -10,6 +10,7 @@ permalink: "{{ product.slug }}/"
 <html lang="en">
   <head x-data="product" x-init="init()">
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title x-text="product.title + ' - ' + product.color.charAt(0).toUpperCase() + product.color.slice(1)"></title>
     <script
       type="module"
