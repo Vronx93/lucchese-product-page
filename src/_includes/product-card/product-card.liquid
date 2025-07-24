@@ -19,12 +19,22 @@
       {% render 'product-card/gallery' %}
     </div>
     <div class="relative w-full md:w-1/2 2xl:max-w-[560px]">
-      <div class="sticky right-0 top-0 bottom-0 left-0 flex flex-col px-5 py-8">
+      <div class="sticky right-0 top-0 bottom-0 left-0 flex flex-col py-8 px-6 md:px-12">
         {% render 'product-card/header' %}
+
+        <div class="hidden md:block mt-3">
+          {% render 'product-card/style-id' %}
+          <div class="w-full h-[1px] bg-gray-200 mt-6"></div>
+        </div>
+
         {% render 'product-card/variant-selector' %}
         <div class="w-full h-[1px] bg-gray-200 my-6"></div>
-        {% render 'product-card/style-id' %}
-        <div class="w-full h-[1px] bg-gray-200 my-6"></div>
+
+        <div class="md:hidden">
+          {% render 'product-card/style-id' %}
+          <div class="w-full h-[1px] bg-gray-200 my-6"></div>
+        </div>
+
         {% render 'product-card/short-description' %}
         {% render 'product-card/size-selector' %}
         {% render 'product-card/size-modal' %}
