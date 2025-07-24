@@ -6,14 +6,14 @@ export default defineConfig({
   server: {
     port: 3001,
   },
-  publicDir: true,
+  publicDir: false,
   build: {
-    outDir: "public/dist",
+    outDir: "public/dist/assets",
     emptyOutDir: false,
     rollupOptions: {
       input: resolve(__dirname, "src/main.ts"),
       output: {
-        entryFileNames: "assets/main.js",
+        entryFileNames: "main.js",
       },
     },
   },
